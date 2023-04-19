@@ -1,0 +1,10 @@
+{
+  "name": "vta-thumbs",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  },
+  "scripts": {
+    "format": "prettier --write web"
+  }
+}

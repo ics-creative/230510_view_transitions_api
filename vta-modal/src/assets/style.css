@@ -1,0 +1,73 @@
+/* -------------------------------------- */
+/* View Transition API */
+/* -------------------------------------- */
+
+:root {
+  --duration: 0.5s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+}
+
+::view-transition-group(card) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+::view-transition-group(card-img) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+::view-transition-group(card-title) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+
+::view-transition-old(card),
+::view-transition-new(card) {
+  /* Prevent the default animation,
+so both views remain opacity:1 throughout the transition */
+  animation: none;
+  /* Use normal blending,
+  so the new view sits on top and obscures the old view */
+  mix-blend-mode: normal;
+  /* Make the height the same as the group,
+  meaning the view size might not match its aspect-ratio. */
+  height: 100%;
+  /* Clip any overflow of the view */
+  overflow: clip;
+
+  border-radius: 16px;
+}
+
+/* The old view is the thumbnail */
+::view-transition-old(card) {
+  object-fit: contain;
+}
+
+/* The new view is the full image */
+::view-transition-new(card) {
+  object-fit: cover;
+}
+
+::view-transition-old(card-img),
+::view-transition-new(card-img) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+  overflow: clip;
+
+  border-radius: 16px 16px 0 0;
+}
+::view-transition-image-pair(card-img) {
+  isolation: none;
+}
+/* The old view is the thumbnail */
+::view-transition-old(card-img) {
+  object-fit: contain;
+}
+
+/* The new view is the full image */
+::view-transition-new(card-img) {
+  object-fit: cover;
+}

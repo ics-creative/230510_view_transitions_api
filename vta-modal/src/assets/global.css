@@ -1,0 +1,28 @@
+/* -------------------------------------- */
+/* 共通CSS */
+/* -------------------------------------- */
+:root {
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255);
+  background-color: #fff;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+}
