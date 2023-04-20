@@ -5,6 +5,6 @@
     "prettier": "^2.8.4"
   },
   "scripts": {
-    "format": "prettier --write web"
+    "format": "prettier --write {vta-thumbs,vta-example}/**/*.{html,js,css}"
   }
 }

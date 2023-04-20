@@ -216,7 +216,7 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   display: grid;
   grid-template-rows: min-content 1fr;
   gap: 32px;
-  margin:  0 16px;
+  margin: 0 16px;
 }
 
 @media (min-width: 980px) {
@@ -252,7 +252,6 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   view-transition-name: related-videos;
 }
 
-
 @media (min-width: 640px) {
   .aside {
     --video-list-auto-flow: row;
@@ -269,7 +268,6 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
-
 }
 
 .header {
@@ -336,10 +334,7 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   grid-auto-columns: var(--video-list-auto-columns);
   grid-auto-flow: var(--video-list-auto-flow);
   grid-auto-rows: var(--video-list-auto-rows);
-  grid-template-columns: var(
-    --video-list-columns,
-    repeat(auto-fill, minmax(300px, 1fr))
-  );
+  grid-template-columns: var(--video-list-columns, repeat(auto-fill, minmax(300px, 1fr)));
   margin: 0;
 }
 
@@ -383,7 +378,7 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   scale: 1.05;
 }
 
-.photo-img {
+.photo-detail {
   aspect-ratio: 16/9;
   display: block;
   width: 100%;

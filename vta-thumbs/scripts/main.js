@@ -1,9 +1,4 @@
-import {
-  getPageContent,
-  onLinkNavigate,
-  transitionHelper,
-  getLink,
-} from "./utils.js";
+import { getPageContent, onLinkNavigate, transitionHelper, getLink } from "./utils.js";
 
 const galleryPath = "index.html";
 const detailPath = `detail-`;

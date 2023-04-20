@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <title>View Transitions API Example | ICS</title>
+    <script>
+      window.addEventListener("DOMContentLoaded", init);
+
+      function init() {
+        document.querySelectorAll(".button-open").forEach((buttonOpen) => {
+          buttonOpen.addEventListener("click", (event) => {
+            const contentId = event.target.dataset.content;
+
+            // View Transitions APIを呼び出す
+            document.startViewTransition(() => {
+              // 遷移後のDOM構造を指定
+              document.querySelector("#view-index").hidden = true;
+              document.querySelectorAll(".view-detail").forEach((element) => {
+                element.hidden = element.dataset.content !== contentId;
+              });
+            });
+          });
+        });
+        document.querySelectorAll(".button-close").forEach((buttonClose) => {
+          buttonClose.addEventListener("click", () => {
+            // View Transitions APIを呼び出す
+            document.startViewTransition(() => {
+              // 遷移後のDOM構造を指定
+              document.querySelector("#view-index").hidden = false;
+              document.querySelectorAll(".view-detail").forEach((element) => {
+                element.hidden = true;
+              });
+            });
+          });
+        });
+      }
+    </script>
+    <style>
+      .photo-thumb[data-content="1"] {
+        view-transition-name: photo-example-1;
+      }
+
+      [data-content="1"] .photo-detail {
+        view-transition-name: photo-example-1;
+      }
+
+      .photo-thumb[data-content="2"] {
+        view-transition-name: photo-example-2;
+      }
+
+      [data-content="2"] .photo-detail {
+        view-transition-name: photo-example-2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="header-text">View Transitions API Example</span>
+    </header>
+
+    <main>
+      <div id="view-index">
+        <h1>Pickup Pictures</h1>
+        <ul class="photo-list">
+          <li>
+            <div class="photo-link">
+              <img class="photo-thumb" data-content="1" src="images/photo_1.webp" width="640" height="360" alt="" />
+              <div class="photo-meta">
+                <p class="i-title">グリフィス天文台からの景観</p>
+                <div>
+                  <button class="btn button-open" data-content="1">詳細を開く</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="photo-link">
+              <img class="photo-thumb" data-content="2" src="images/photo_2.webp" width="640" height="360" alt="" />
+              <div class="photo-meta">
+                <p class="i-title">グリフィス天文台からの景観</p>
+                <div>
+                  <button class="btn button-open" data-content="2">詳細を開く</button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="view-detail" data-content="1" hidden>
+        <div class="detail-action">
+          <button class="btn button-close">一覧へもどる</button>
+        </div>
+        <div class="detail-layout">
+          <div>
+            <img class="photo-detail" src="images/photo_1.webp" width="640" height="360" alt="" />
+          </div>
+          <div class="photo-details">
+            <p class="i-title">グリフィス天文台からの景観</p>
+            <p class="i-sub">ロサンゼルス</p>
+            <p class="i-desc">
+              グリフィス天文台は、ロサンゼルスのグリフィス公園内にある天文台です。アールデコ調の外観と、ダウンタウンをふくめ市内を一望できます。<br />
+              2006年に、4年に渡る大規模な改築工事が完成し、展示場やシアター、カフェなどが加えられた[1]。また敷地内には映画「理由なき反抗」のロケ地として使用され、天文台の知名度を向上させた功績から、同作品で主演を務めたジェームズ・ディーンの銅像が建てられている。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-detail" data-content="2" hidden>
+        <div class="detail-action">
+          <button class="btn button-close">一覧へもどる</button>
+        </div>
+        <div class="detail-layout">
+          <div>
+            <img class="photo-detail" src="images/photo_2.webp" width="640" height="360" alt="" />
+          </div>
+          <div class="photo-details">
+            <p class="i-title">グリフィス天文台からの景観</p>
+            <p class="i-sub">ロサンゼルス</p>
+            <p class="i-desc">
+              グリフィス天文台は、ロサンゼルスのグリフィス公園内にある天文台です。アールデコ調の外観と、ダウンタウンをふくめ市内を一望できます。<br />
+              2006年に、4年に渡る大規模な改築工事が完成し、展示場やシアター、カフェなどが加えられた[1]。また敷地内には映画「理由なき反抗」のロケ地として使用され、天文台の知名度を向上させた功績から、同作品で主演を務めたジェームズ・ディーンの銅像が建てられている。
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="attention">
+      このデモはデスクトップのChrome・Edge向けに作成しています。Chrome・Edgeで確認ください。
+    </footer>
+  </body>
+</html>

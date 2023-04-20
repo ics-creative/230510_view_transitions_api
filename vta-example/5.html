@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <title>View Transitions API Example | ICS</title>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3.2.27/dist/vue.esm-browser.prod.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { createApp, ref, nextTick } from "vue";
+      const componentThumb = {
+        props: ["content"],
+        emits: ["select"],
+        template: `<li>
+            <div class="photo-link">
+              <img class="photo-thumb"
+                   v-bind:src="'images/photo_' + content + '.webp'"
+                   v-bind:style="'view-transition-name: content-'+ content"
+                   width="640" height="360" alt="" />
+              <div class="photo-meta">
+                <p class="i-title">グリフィス天文台からの景観</p>
+                <div>
+                  <button class="btn button-open" v-on:click="$emit('open')">詳細を開く</button>
+                </div>
+              </div>
+            </div>
+          </li>`,
+      };
+
+      const componentDetail = {
+        props: ["content"],
+        emits: ["open"],
+        template: `<div class="view-detail" >
+          <div class="detail-action">
+            <button class="btn button-close" v-on:click="$emit('back')">一覧へもどる</button>
+          </div>
+          <div class="detail-layout">
+            <div>
+              <img class="photo-detail"
+                   v-bind:src="'images/photo_' + content + '.webp'"
+                   v-bind:style="'view-transition-name: content-'+ content"
+                   width="640" height="360" alt="" />
+            </div>
+            <div class="photo-details">
+              <p class="i-title">グリフィス天文台からの景観</p>
+              <p class="i-sub">ロサンゼルス</p>
+              <p class="i-desc">
+                グリフィス天文台は、ロサンゼルスのグリフィス公園内にある天文台です。アールデコ調の外観と、ダウンタウンをふくめ市内を一望できます。<br />
+                2006年に、4年に渡る大規模な改築工事が完成し、展示場やシアター、カフェなどが加えられた[1]。また敷地内には映画「理由なき反抗」のロケ地として使用され、天文台の知名度を向上させた功績から、同作品で主演を務めたジェームズ・ディーンの銅像が建てられている。
+              </p>
+            </div>
+          </div>
+        </div>`,
+      };
+
+      const app = createApp({
+        setup() {
+          // 現在表示している画面を示す状態
+          const currentContent = ref(null);
+
+          // 画面遷移の関数
+          const goPage = (content) => {
+            // View Transitions APIを使って、遷移を行う
+            document.startViewTransition(async () => {
+              currentContent.value = content;
+              await nextTick();
+            });
+          };
+          return { currentContent, goPage };
+        },
+        components: {
+          componentThumb,
+          componentDetail,
+        },
+      });
+      app.mount("#app");
+    </script>
+    <style>
+      .photo-thumb,
+      .photo-detail {
+        contain: paint;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="header-text">View Transitions API Example</span>
+    </header>
+    <main id="app">
+      <div v-if="currentContent === null">
+        <h1>Pickup Pictures</h1>
+        <ul class="photo-list">
+          <component-thumb content="1" v-on:open="goPage('1')"></component-thumb>
+          <component-thumb content="2" v-on:open="goPage('2')"></component-thumb>
+        </ul>
+      </div>
+
+      <component-detail v-if="currentContent === '1'" content="1" v-on:back="goPage(null)"></component-detail>
+      <component-detail v-if="currentContent === '2'" content="2" v-on:back="goPage(null)"></component-detail>
+    </main>
+
+    <footer class="attention">
+      このデモはデスクトップのChrome・Edge向けに作成しています。Chrome・Edgeで確認ください。
+    </footer>
+  </body>
+</html>

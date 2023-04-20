@@ -13,16 +13,10 @@ export async function getPageContent(url) {
 }
 
 function isBackNavigation(navigateEvent) {
-  if (
-    navigateEvent.navigationType === "push" ||
-    navigateEvent.navigationType === "replace"
-  ) {
+  if (navigateEvent.navigationType === "push" || navigateEvent.navigationType === "replace") {
     return false;
   }
-  if (
-    navigateEvent.destination.index !== -1 &&
-    navigateEvent.destination.index < navigation.currentEntry.index
-  ) {
+  if (navigateEvent.destination.index !== -1 && navigateEvent.destination.index < navigation.currentEntry.index) {
     return true;
   }
   return false;
@@ -57,23 +51,15 @@ export async function onLinkNavigate(callback) {
 export function getLink(href) {
   const fullLink = new URL(href, location.href).href;
 
-  return [...document.querySelectorAll("a")].find(
-    (link) => link.href === fullLink
-  );
+  return [...document.querySelectorAll("a")].find((link) => link.href === fullLink);
 }
 
 // This helper function returns a View-Transition-like object, even for browsers that don't support view transitions.
 // It won't do the transition in unsupported browsers, it'll act as if the transition is skipped.
 // It also makes it easier to add class names to the document element.
-export function transitionHelper({
-  skipTransition = false,
-  classNames = "",
-  updateDOM,
-}) {
+export function transitionHelper({ skipTransition = false, classNames = "", updateDOM }) {
   if (skipTransition || !document.startViewTransition) {
-    const updateCallbackDone = Promise.resolve(updateDOM()).then(
-      () => undefined
-    );
+    const updateCallbackDone = Promise.resolve(updateDOM()).then(() => undefined);
 
     return {
       ready: Promise.reject(Error("View transitions unsupported")),
@@ -89,9 +75,7 @@ export function transitionHelper({
 
   const transition = document.startViewTransition(updateDOM);
 
-  transition.finished.finally(() =>
-    document.documentElement.classList.remove(...classNamesArray)
-  );
+  transition.finished.finally(() => document.documentElement.classList.remove(...classNamesArray));
 
   return transition;
 }
