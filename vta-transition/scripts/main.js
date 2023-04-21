@@ -1,11 +1,6 @@
-import {
-  getPageContent,
-  onLinkNavigate,
-  transitionHelper,
-} from "./utils.js";
+import { getPageContent, onLinkNavigate, transitionHelper } from "./utils.js";
 
-
-onLinkNavigate(async ({fromPath, toPath}) => {
+onLinkNavigate(async ({ fromPath, toPath }) => {
   const content = await getPageContent(toPath);
 
   transitionHelper({
@@ -14,5 +9,3 @@ onLinkNavigate(async ({fromPath, toPath}) => {
     },
   });
 });
-
-

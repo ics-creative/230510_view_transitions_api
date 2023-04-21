@@ -39,20 +39,15 @@
       }
     </script>
     <style>
-      .photo-thumb[data-content="1"] {
+      /* 写真1 */
+      .photo-1 {
         view-transition-name: photo-example-1;
+        contain: paint;
       }
-
-      [data-content="1"] .photo-detail {
-        view-transition-name: photo-example-1;
-      }
-
-      .photo-thumb[data-content="2"] {
+      /* * 写真2 */
+      .photo-2 {
         view-transition-name: photo-example-2;
-      }
-
-      [data-content="2"] .photo-detail {
-        view-transition-name: photo-example-2;
+        contain: paint;
       }
     </style>
   </head>
@@ -62,16 +57,24 @@
     </header>
 
     <main>
+      <!-- 一覧画面 -->
       <div id="view-index">
         <h1>Pickup Pictures</h1>
         <ul class="photo-list">
           <li>
             <div class="photo-link">
-              <img class="photo-thumb" data-content="1" src="images/photo_1.webp" width="640" height="360" alt="" />
+              <img
+                class="photo-thumb photo-1"
+                data-content="1"
+                src="images/photo_1.webp"
+                width="640"
+                height="360"
+                alt=""
+              />
               <div class="photo-meta">
                 <p class="i-title">グリフィス天文台からの景観</p>
                 <div>
-                  <button class="btn button-open" data-content="1">詳細を開く</button>
+                  <button class="btn button-open" data-content="1">詳細をひらく</button>
                 </div>
               </div>
             </div>
@@ -79,11 +82,18 @@
 
           <li>
             <div class="photo-link">
-              <img class="photo-thumb" data-content="2" src="images/photo_2.webp" width="640" height="360" alt="" />
+              <img
+                class="photo-thumb photo-2"
+                data-content="2"
+                src="images/photo_2.webp"
+                width="640"
+                height="360"
+                alt=""
+              />
               <div class="photo-meta">
                 <p class="i-title">グリフィス天文台からの景観</p>
                 <div>
-                  <button class="btn button-open" data-content="2">詳細を開く</button>
+                  <button class="btn button-open" data-content="2">詳細をひらく</button>
                 </div>
               </div>
             </div>
@@ -91,13 +101,14 @@
         </ul>
       </div>
 
+      <!-- 詳細画面 -->
       <div class="view-detail" data-content="1" hidden>
         <div class="detail-action">
           <button class="btn button-close">一覧へもどる</button>
         </div>
         <div class="detail-layout">
           <div>
-            <img class="photo-detail" src="images/photo_1.webp" width="640" height="360" alt="" />
+            <img class="photo-detail photo-1" src="images/photo_1.webp" width="640" height="360" alt="" />
           </div>
           <div class="photo-details">
             <p class="i-title">グリフィス天文台からの景観</p>
@@ -116,7 +127,7 @@
         </div>
         <div class="detail-layout">
           <div>
-            <img class="photo-detail" src="images/photo_2.webp" width="640" height="360" alt="" />
+            <img class="photo-detail photo-2" src="images/photo_2.webp" width="640" height="360" alt="" />
           </div>
           <div class="photo-details">
             <p class="i-title">グリフィス天文台からの景観</p>

@@ -65,17 +65,16 @@ body {
 @keyframes flip-out {
   0% {
     transform: rotateY(0);
-
   }
   100% {
-    transform: translateX(100%) rotateY(-90deg) ;
+    transform: translateX(100%) rotateY(-90deg);
     opacity: 0.5;
   }
 }
 
 @keyframes flip-in {
   0% {
-    transform: translateX(-100%)  rotateY(90deg);
+    transform: translateX(-100%) rotateY(90deg);
     opacity: 0.5;
   }
   100% {
@@ -87,7 +86,7 @@ body {
   animation: 800ms var(--easing-sin-in-out) forwards zoom-in-out;
 }
 
-::view-transition-old(root){
+::view-transition-old(root) {
   transform-origin: left center;
   animation: 800ms var(--easing-cubic-in-out) forwards flip-out;
 }
@@ -96,7 +95,6 @@ body {
   transform-origin: right center;
   animation: 800ms var(--easing-cubic-in-out) forwards flip-in;
 }
-
 
 .app {
   display: flex;

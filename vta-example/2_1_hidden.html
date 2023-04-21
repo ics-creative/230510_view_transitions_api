@@ -10,6 +10,9 @@
       window.addEventListener("DOMContentLoaded", init);
 
       function init() {
+        // ---------------------------
+        // 一覧画面から詳細画面へ
+        // ---------------------------
         const buttonOpen = document.querySelector(".button-open");
 
         buttonOpen.addEventListener("click", () => {
@@ -21,6 +24,9 @@
           });
         });
 
+        // ---------------------------
+        // 詳細画面から一覧画面へ
+        // ---------------------------
         const buttonClose = document.querySelector(".button-close");
 
         buttonClose.addEventListener("click", () => {
@@ -33,6 +39,15 @@
         });
       }
     </script>
+    <style>
+      .photo-thumb {
+        view-transition-name: photo-example;
+      }
+
+      .photo-detail {
+        view-transition-name: photo-example;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -40,6 +55,7 @@
     </header>
 
     <main>
+      <!-- 一覧画面 -->
       <div id="view-index">
         <h1>Pickup Pictures</h1>
         <ul class="photo-list">
@@ -49,7 +65,7 @@
               <div class="photo-meta">
                 <p class="i-title">グリフィス天文台からの景観</p>
                 <div>
-                  <button class="btn button-open">詳細を開く</button>
+                  <button class="btn button-open">詳細をひらく</button>
                 </div>
               </div>
             </div>
@@ -57,7 +73,9 @@
         </ul>
       </div>
 
+      <!-- 詳細画面 -->
       <div id="view-detail" hidden>
+        <!-- 🌟hiddenで隠す -->
         <div class="detail-action">
           <button class="btn button-close">一覧へもどる</button>
         </div>
