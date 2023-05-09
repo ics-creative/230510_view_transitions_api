@@ -1,0 +1,311 @@
+/* -------------------------------------- */
+/* 共通CSS */
+/* -------------------------------------- */
+:root {
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255);
+  background-color: #fff;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+}
+/* -------------------------------------- */
+/* View Transition API */
+/* -------------------------------------- */
+
+:root {
+  --duration: 0.5s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+}
+
+::view-transition-group(card) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+::view-transition-group(card-img) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+::view-transition-group(card-title) {
+  animation-duration: var(--duration);
+  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+}
+
+::view-transition-old(card),
+::view-transition-new(card) {
+  /* Prevent the default animation,
+so both views remain opacity:1 throughout the transition */
+  animation: none;
+  /* Use normal blending,
+  so the new view sits on top and obscures the old view */
+  mix-blend-mode: normal;
+  /* Make the height the same as the group,
+  meaning the view size might not match its aspect-ratio. */
+  height: 100%;
+  /* Clip any overflow of the view */
+  overflow: clip;
+
+  border-radius: 16px;
+}
+
+/* The old view is the thumbnail */
+::view-transition-old(card) {
+  object-fit: contain;
+}
+
+/* The new view is the full image */
+::view-transition-new(card) {
+  object-fit: cover;
+}
+
+::view-transition-old(card-img),
+::view-transition-new(card-img) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+  overflow: clip;
+
+  border-radius: 16px 16px 0 0;
+}
+::view-transition-image-pair(card-img) {
+  isolation: none;
+}
+/* The old view is the thumbnail */
+::view-transition-old(card-img) {
+  object-fit: contain;
+}
+
+/* The new view is the full image */
+::view-transition-new(card-img) {
+  object-fit: cover;
+}
+
+.header[data-v-1956c74f] {
+  background-color: #eee;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+h1[data-v-1956c74f] {
+  font-size: 1.25rem;
+  padding-left: 32px;
+  color: black;
+}
+
+.headline[data-v-f8c65941] {
+  position: relative;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  width: 240px;
+}
+.date[data-v-f8c65941] {
+  color: white;
+  font-size: 0.8rem;
+  /*color: rgba(255,255,255,0.7);*/
+  margin-bottom: 0;
+  opacity: 0.75;
+}
+.title[data-v-f8c65941] {
+  color: white;
+  margin-top: 8px;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 900;
+}
+@media (max-width: 960px) {
+.headline[data-v-f8c65941] {
+    width: initial;
+}
+.title[data-v-f8c65941] {
+    font-size: 1em;
+}
+}
+
+.card[data-v-4eb9d657] {
+  border-radius: 16px;
+  height: 380px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s;
+}
+@media (max-width: 960px) {
+.card[data-v-4eb9d657] {
+    height: 180px;
+}
+}
+.card[data-v-4eb9d657]:hover {
+  filter: brightness(1.1);
+  scale: 1.05;
+}
+.card-thumb[data-v-4eb9d657] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.card-thumb img[data-v-4eb9d657] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-headline[data-v-4eb9d657] {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.modal[data-v-a425f6c5] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+
+  backdrop-filter: blur(16px);
+}
+.modal-dialog[data-v-a425f6c5] {
+  max-width: 960px;
+  margin-top: 64px;
+  height: calc(100% - 64px);
+  position: relative;
+  view-transition-name: card;
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* 本当はちゃんと対策してね */
+}
+@media (max-width: 960px) {
+.modal-dialog[data-v-a425f6c5] {
+    margin-left: 32px;
+    margin-right: 32px;
+}
+}
+.modal-headline[data-v-a425f6c5] {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+}
+.modal-thumb[data-v-a425f6c5] {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+}
+@media (max-width: 960px) {
+.modal-thumb[data-v-a425f6c5] {
+    height: 40vh;
+}
+}
+.modal-thumb img[data-v-a425f6c5] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-description[data-v-a425f6c5] {
+  position: relative;
+  color: #808080;
+  padding: 32px;
+  line-height: 2;
+  background-color: white;
+  font-size: 0.8rem;
+}
+@media (max-width: 960px) {
+.modal-description[data-v-a425f6c5] {
+    padding: 8px;
+}
+}
+.modal-close[data-v-a425f6c5] {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.modal-close[data-v-a425f6c5]:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+[data-v-a425f6c5] .headline {
+  view-transition-name: card-title;
+}
+
+.page[data-v-4de1fd9a] {
+  --gap: 48px;
+}
+@media (max-width: calc(1080px + 32px)) {
+.page[data-v-4de1fd9a] {
+    --gap: 16px;
+}
+}
+.table[data-v-4de1fd9a] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  max-width: 1080px;
+  margin: 0 auto 32px;
+}
+@media (max-width: calc(1080px + 32px)) {
+.table[data-v-4de1fd9a] {
+    margin-left: 32px;
+    margin-right: 32px;
+}
+}
+@media (max-width: 960px) {
+.table[data-v-4de1fd9a] {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+}
+.row[data-v-4de1fd9a] {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--gap);
+}
+.row._left[data-v-4de1fd9a] .card:nth-child(1) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.row._left[data-v-4de1fd9a] .card:nth-child(2) {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.row._right[data-v-4de1fd9a] .card:nth-child(1) {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.row._right[data-v-4de1fd9a] .card:nth-child(2) {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}

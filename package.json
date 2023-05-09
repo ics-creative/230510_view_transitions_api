@@ -2,9 +2,14 @@
   "name": "vta-thumbs",
   "private": true,
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.8"
   },
   "scripts": {
     "format": "prettier --write {vta-thumbs,vta-example,vta-transition}/**/*.{html,js,css}"
-  }
+  },
+  "workspaces": [
+    "vta-thumbs",
+    "vta-modal",
+    "vta-transition"
+  ]
 }

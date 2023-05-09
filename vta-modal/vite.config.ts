@@ -5,4 +5,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: './',
+
+  // minifyせずに出力（コードを読みやすくするため）
+  build: {
+    minify: false,
+  }
 })

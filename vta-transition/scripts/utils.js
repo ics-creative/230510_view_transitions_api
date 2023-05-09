@@ -48,12 +48,6 @@ export async function onLinkNavigate(callback) {
   });
 }
 
-export function getLink(href) {
-  const fullLink = new URL(href, location.href).href;
-
-  return [...document.querySelectorAll("a")].find((link) => link.href === fullLink);
-}
-
 // This helper function returns a View-Transition-like object, even for browsers that don't support view transitions.
 // It won't do the transition in unsupported browsers, it'll act as if the transition is skipped.
 // It also makes it easier to add class names to the document element.
