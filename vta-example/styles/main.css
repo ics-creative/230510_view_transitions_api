@@ -71,10 +71,9 @@ header {
 main {
   padding: 16px;
 }
-.header-text {
-  font-size: 1.5rem;
-  line-height: 1;
-  display: block;
+
+h1 {
+  margin: 0 0 8px;
 }
 
 .photo-list {
