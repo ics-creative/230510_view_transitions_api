@@ -393,6 +393,10 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   border-radius: 8px;
   overflow: hidden;
 }
+.photo-img {
+  width: 100%;
+  height: auto;
+}
 
 .from-video.to-video .detail-photo-container {
   view-transition-name: none;
