@@ -2,10 +2,10 @@
   <div v-if="selected" class="card"></div>
 
   <button v-if="!selected" class="card" @click="openDialog" :data-card="item.id">
-    <span class="card-thumb">
+    <div class="card-thumb"><!-- div! 楽してごめん♪ -->
       <img :src="item.thumb" width="1" height="1" alt="" />
       <CardHeadline class="card-headline" :item="item" />
-    </span>
+    </div>
   </button>
 </template>
 
