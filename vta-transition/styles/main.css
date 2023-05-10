@@ -13,6 +13,7 @@ body {
   font-family: "Titillium Web", "Noto Sans JP", sans-serif;
   line-height: 1.5;
   height: 100%;
+  overflow: hidden;
 }
 
 ::view-transition {
@@ -116,6 +117,9 @@ body {
   }
 }
 
+h1 {
+  margin: 0;
+}
 ._sub {
   background-color: #404040;
 }
