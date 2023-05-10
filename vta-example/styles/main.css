@@ -79,9 +79,9 @@ h1 {
 .photo-list {
   display: grid;
   gap: var(--content-padding);
-  grid-auto-columns: var(--video-list-auto-columns);
-  grid-auto-flow: var(--video-list-auto-flow);
-  grid-auto-rows: var(--video-list-auto-rows);
+  grid-auto-columns: var(--item-list-auto-columns);
+  grid-auto-flow: var(--item-list-auto-flow);
+  grid-auto-rows: var(--item-list-auto-rows);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 

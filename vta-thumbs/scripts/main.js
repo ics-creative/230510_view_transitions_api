@@ -11,11 +11,11 @@ const detailPath = `detail-`;
  */
 function getNavigationType(fromPath, toPath) {
   if (fromPath.includes(detailPath) && toPath.endsWith(galleryPath)) {
-    return "detail-page-to-gallery";
+    return "detail-page-to-index";
   }
 
   if (fromPath.endsWith(galleryPath) && toPath.includes(detailPath)) {
-    return "gallery-to-detail-page";
+    return "index-to-detail-page";
   }
 
   if (fromPath.includes(detailPath) && toPath.includes(detailPath)) {
@@ -32,21 +32,21 @@ onLinkNavigate(async ({ fromPath, toPath, isBack }) => {
   let targetThumbnail;
   let classNames = "";
 
-  if (navigationType === "gallery-to-detail-page") {
+  if (navigationType === "index-to-detail-page") {
     targetThumbnail = getLink(toPath).querySelector("img");
     targetThumbnail.style.viewTransitionName = "banner-img";
-    classNames = "from-thumbs to-video";
-  } else if (navigationType === "detail-page-to-gallery") {
-    classNames = "to-thumbs from-video";
+    classNames = "from-index to-detail";
+  } else if (navigationType === "detail-page-to-index") {
+    classNames = "to-index from-detail";
   } else if (navigationType === "detail-to-detail-page") {
-    classNames = "to-video from-video" + (isBack ? " back-transition" : "");
+    classNames = "to-detail from-detail" + (isBack ? " back-transition" : "");
   }
 
   const transition = transitionHelper({
     updateDOM() {
       document.body.innerHTML = content;
 
-      if (navigationType === "detail-page-to-gallery") {
+      if (navigationType === "detail-page-to-index") {
         targetThumbnail = getLink(fromPath).querySelector("img");
         targetThumbnail.style.viewTransitionName = "banner-img";
       }
@@ -60,6 +60,7 @@ onLinkNavigate(async ({ fromPath, toPath, isBack }) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 初期表示時の演出
   document.querySelectorAll(".photo-list > li").forEach((element, index) => {
     element.style = "opacity: 0";
     element.animate([{ scale: 0.9 }, { opacity: 1 }], {

@@ -123,90 +123,89 @@ p {
   }
 }
 
-html.from-thumbs.to-video::view-transition-group(embed-container),
-html.from-video.to-thumbs::view-transition-group(embed-container) {
-  animation-timing-function: ease;
+html.from-index.to-detail::view-transition-group(embed-container),
+html.from-detail.to-index::view-transition-group(embed-container) {
   z-index: 1;
 }
 
-html.from-thumbs.to-video::view-transition-group(root),
-html.from-video.to-thumbs::view-transition-group(root) {
+html.from-index.to-detail::view-transition-group(root),
+html.from-detail.to-index::view-transition-group(root) {
   animation: none;
   z-index: 0;
 }
 
-html.from-thumbs.to-video::view-transition-image-pair(root),
-html.from-video.to-thumbs::view-transition-image-pair(root) {
+html.from-index.to-detail::view-transition-image-pair(root),
+html.from-detail.to-index::view-transition-image-pair(root) {
   isolation: auto;
   mix-blend-mode: plus-lighter;
 }
 
-html.from-thumbs.to-video::view-transition-new(root),
-html.from-thumbs.to-video::view-transition-old(root),
-html.from-video.to-thumbs::view-transition-new(root),
-html.from-video.to-thumbs::view-transition-old(root) {
+html.from-index.to-detail::view-transition-new(root),
+html.from-index.to-detail::view-transition-old(root),
+html.from-detail.to-index::view-transition-new(root),
+html.from-detail.to-index::view-transition-old(root) {
   mix-blend-mode: normal;
   transform-origin: 0 0;
 }
 
-html.from-thumbs.to-video::view-transition-old(root) {
-  animation: _fade-out-a-bit 0.3s ease both;
+html.from-index.to-detail::view-transition-old(root) {
+  animation: _fade-out-a-bit 0.3s both;
 }
 
-html.from-video.to-thumbs::view-transition-new(root) {
-  animation: _fade-in-a-bit 0.3s ease both;
+html.from-detail.to-index::view-transition-new(root) {
+  animation: _fade-in-a-bit 0.3s both;
 }
 
-html.from-thumbs.to-video::view-transition-new(root) {
-  animation: _fade-in 0.15s ease 60ms both;
+html.from-index.to-detail::view-transition-new(root) {
+  animation: _fade-in 0.15s 60ms both;
 }
 
-html.from-video.to-thumbs::view-transition-old(root) {
-  animation: _fade-out 0.15s ease 60ms both;
+html.from-detail.to-index::view-transition-old(root) {
+  animation: _fade-out 0.15s 60ms both;
   z-index: 2;
 }
 
-html.from-video.to-video::view-transition-new(root) {
-  animation: _slide-from-right 0.5s ease-out both;
+html.from-detail.to-detail::view-transition-new(root) {
+  animation: _slide-from-right 0.5s both;
 }
 
-html.from-video.to-video::view-transition-old(root) {
-  animation: _slide-to-left 0.5s ease-out both;
+html.from-detail.to-detail::view-transition-old(root) {
+  animation: _slide-to-left 0.5s both;
 }
 
-html.from-video.to-video.back-transition::view-transition-new(root) {
+html.from-detail.to-detail.back-transition::view-transition-new(root) {
   animation-name: _slide-from-left;
 }
 
-html.from-video.to-video.back-transition::view-transition-old(root) {
+html.from-detail.to-detail.back-transition::view-transition-old(root) {
   animation-name: _slide-to-right;
 }
 
-@media (min-width: 660px) {
-  html.from-video.to-video::view-transition-new(root) {
+@media (min-width: 640px) {
+  html.from-detail.to-detail::view-transition-new(root) {
     animation-duration: 0.3s;
     animation-name: _slide-and-fade-from-right;
   }
 
-  html.from-video.to-video::view-transition-old(root) {
+  html.from-detail.to-detail::view-transition-old(root) {
     animation-duration: 0.3s;
     animation-name: _slide-and-fade-to-left;
   }
 
-  html.from-video.to-video.back-transition::view-transition-new(root) {
+  html.from-detail.to-detail.back-transition::view-transition-new(root) {
     animation-name: _slide-and-fade-from-left;
   }
 
-  html.from-video.to-video.back-transition::view-transition-old(root) {
+  html.from-detail.to-detail.back-transition::view-transition-old(root) {
     animation-name: _slide-and-fade-to-right;
   }
 }
 
-html.from-video.to-thumbs::view-transition-old(related-videos) {
+html.from-detail.to-index::view-transition-old(related-items) {
   /* 消えるときはさりげなくフェードアウトとする（未指定） */
 }
 
-html.to-video.from-thumbs::view-transition-new(related-videos) {
+html.to-detail.from-index::view-transition-new(related-items) {
   /* ちょっとだけ移動 */
   animation-name: _slide-and-fade-from-right-bit;
   animation-delay: 0.1s;
@@ -216,7 +215,6 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   display: grid;
   grid-template-rows: min-content 1fr;
   gap: 32px;
-  margin: 0 16px;
 }
 
 @media (min-width: 980px) {
@@ -242,21 +240,15 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   --font-size-sub: 0.875rem;
 }
 
-._video-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
 .aside {
-  view-transition-name: related-videos;
+  view-transition-name: related-items;
 }
 
 @media (min-width: 640px) {
   .aside {
-    --video-list-auto-flow: row;
-    --video-list-auto-columns: auto;
-    --video-list-auto-rows: auto;
+    --item-list-auto-flow: row;
+    --item-list-auto-columns: auto;
+    --item-list-auto-rows: auto;
 
     height: 100vh;
     overflow-x: hidden;
@@ -290,13 +282,14 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   grid-template-columns: 100%;
   max-width: 1080px;
   margin: 32px auto 0;
+
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 @media (max-width: 980px) {
   .main {
     display: block;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 }
 
@@ -331,11 +324,16 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
 .photo-list {
   display: grid;
   gap: var(--content-padding);
-  grid-auto-columns: var(--video-list-auto-columns);
-  grid-auto-flow: var(--video-list-auto-flow);
-  grid-auto-rows: var(--video-list-auto-rows);
-  grid-template-columns: var(--video-list-columns, repeat(auto-fill, minmax(300px, 1fr)));
+  grid-auto-columns: var(--item-list-auto-columns);
+  grid-auto-flow: var(--item-list-auto-flow);
+  grid-auto-rows: var(--item-list-auto-rows);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   margin: 0;
+}
+@media (max-width: 640px) {
+  .photo-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .photo-list > li {
@@ -373,6 +371,13 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
 
   transition: 0.2s;
 }
+@media (max-width: 640px) {
+  .photo-link {
+    --font-size-title: 1rem;
+    --font-size-sub: 0.75rem;
+    --font-size-desc: 0.75rem;
+  }
+}
 
 .photo-link:hover {
   scale: 1.05;
@@ -398,7 +403,7 @@ html.to-video.from-thumbs::view-transition-new(related-videos) {
   height: auto;
 }
 
-.from-video.to-video .detail-photo-container {
+.from-detail.to-detail .detail-photo-container {
   view-transition-name: none;
 }
 
