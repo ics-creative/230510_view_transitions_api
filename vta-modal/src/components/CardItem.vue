@@ -1,12 +1,12 @@
 <template>
   <div v-if="selected" class="card"></div>
 
-  <div v-if="!selected" class="card" @click="openDialog" :data-card="item.id">
-    <div class="card-thumb">
+  <button v-if="!selected" class="card" @click="openDialog" :data-card="item.id">
+    <span class="card-thumb">
       <img :src="item.thumb" width="1" height="1" alt="" />
       <CardHeadline class="card-headline" :item="item" />
-    </div>
-  </div>
+    </span>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -32,6 +32,7 @@ const openDialog = () => {
   position: relative;
   overflow: hidden;
   transition: 0.2s;
+  cursor: pointer;
 }
 @media (max-width: 960px) {
   .card {

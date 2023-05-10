@@ -144,36 +144,37 @@ h1[data-v-1956c74f] {
 }
 }
 
-.card[data-v-4eb9d657] {
+.card[data-v-bc84d1cd] {
   border-radius: 16px;
   height: 380px;
   display: block;
   position: relative;
   overflow: hidden;
   transition: 0.2s;
+  cursor: pointer;
 }
 @media (max-width: 960px) {
-.card[data-v-4eb9d657] {
+.card[data-v-bc84d1cd] {
     height: 180px;
 }
 }
-.card[data-v-4eb9d657]:hover {
+.card[data-v-bc84d1cd]:hover {
   filter: brightness(1.1);
   scale: 1.05;
 }
-.card-thumb[data-v-4eb9d657] {
+.card-thumb[data-v-bc84d1cd] {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.card-thumb img[data-v-4eb9d657] {
+.card-thumb img[data-v-bc84d1cd] {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.card-headline[data-v-4eb9d657] {
+.card-headline[data-v-bc84d1cd] {
   position: absolute;
   bottom: 0px;
   left: 0px;

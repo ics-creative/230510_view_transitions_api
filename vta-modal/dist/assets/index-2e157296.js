@@ -5163,13 +5163,13 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [
         __props.selected ? (openBlock(), createElementBlock("div", _hoisted_1$2)) : createCommentVNode("", true),
-        !__props.selected ? (openBlock(), createElementBlock("div", {
+        !__props.selected ? (openBlock(), createElementBlock("button", {
           key: 1,
           class: "card",
           onClick: openDialog,
           "data-card": __props.item.id
         }, [
-          createBaseVNode("div", _hoisted_3$1, [
+          createBaseVNode("span", _hoisted_3$1, [
             createBaseVNode("img", {
               src: __props.item.thumb,
               width: "1",
@@ -5186,8 +5186,8 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const CardItem_vue_vue_type_style_index_0_scoped_4eb9d657_lang = "";
-const CardItem = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4eb9d657"]]);
+const CardItem_vue_vue_type_style_index_0_scoped_bc84d1cd_lang = "";
+const CardItem = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-bc84d1cd"]]);
 const _hoisted_1$1 = { class: "modal" };
 const _hoisted_2$1 = { class: "modal-dialog" };
 const _hoisted_3 = { class: "modal-dialog-inner" };
