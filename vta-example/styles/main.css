@@ -19,6 +19,7 @@ body {
 }
 
 h1 {
+  font-size: 1.25rem;
   font-weight: inherit;
 }
 a {
@@ -83,6 +84,12 @@ h1 {
   grid-auto-flow: var(--item-list-auto-flow);
   grid-auto-rows: var(--item-list-auto-rows);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .photo-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .photo-thumb {
