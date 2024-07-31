@@ -26,26 +26,51 @@ function isBackNavigation(navigateEvent) {
 // https://developer.chrome.com/docs/web-platform/navigation-api/
 // This is a naive usage of the navigation API, to keep things simple.
 export async function onLinkNavigate(callback) {
-  navigation.addEventListener("navigate", (event) => {
-    const toUrl = new URL(event.destination.url);
+  // Navigation APIが利用可能なブラウザの場合（2024年現在、ChromeとEdgeを想定）
+  if ("navigation" in window) {
+    navigation.addEventListener("navigate", (event) => {
+      const toUrl = new URL(event.destination.url);
 
-    if (location.origin !== toUrl.origin) return;
+      if (location.origin !== toUrl.origin) return;
 
-    const fromPath = location.pathname;
-    const isBack = isBackNavigation(event);
+      const fromPath = location.pathname;
+      const isBack = isBackNavigation(event);
 
-    event.intercept({
-      async handler() {
-        if (event.info === "ignore") return;
+      event.intercept({
+        async handler() {
+          if (event.info === "ignore") return;
 
-        await callback({
-          toPath: toUrl.pathname,
-          fromPath,
-          isBack,
-        });
-      },
+          await callback({
+            toPath: toUrl.pathname,
+            fromPath,
+            isBack,
+          });
+        },
+      });
     });
-  });
+  } else {
+    // Navigation APIが使わないブラウザでは類似の処理を記載（互換ではない）
+    // おもにSafari 18.0向け
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("a");
+
+      if (!target) return;
+
+      const toUrl = new URL(target.href);
+
+      if (location.origin !== toUrl.origin) return;
+
+      event.preventDefault();
+
+      callback({
+        toPath: toUrl.pathname,
+        fromPath: location.pathname,
+        isBack: false,
+      });
+
+      history.pushState(null, "", toUrl.pathname);
+    });
+  }
 }
 
 export function getLink(href) {

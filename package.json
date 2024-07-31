@@ -2,10 +2,10 @@
   "name": "vta-thumbs",
   "private": true,
   "devDependencies": {
-    "prettier": "^3.3.1"
+    "prettier": "^3.3.3"
   },
   "scripts": {
-    "format": "prettier --write {vta-thumbs,vta-mpa,vta-example,vta-transition}/**/*.{html,js,css}"
+    "format": "prettier --write {vta-thumbs,vta-mpa-example,vta-example,vta-transition}/**/*.{html,js,css}"
   },
   "workspaces": [
     "vta-thumbs",

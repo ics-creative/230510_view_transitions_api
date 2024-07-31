@@ -33,7 +33,6 @@ const openDialog = (item: Item) => {
   });
 };
 
-
 const closeDialog = () => {
   const id = selectedItem.value?.id ?? "";
 
