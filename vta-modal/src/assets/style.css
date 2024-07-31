@@ -3,7 +3,14 @@
 /* -------------------------------------- */
 
 :root {
-  --duration: 0.5s;
+  &.go-open {
+    --duration: 0.5s;
+    --ease-custom-back: cubic-bezier(0.115, -0.305, 0, 1.205);
+  }
+  &.go-close {
+    --duration: 0.3s;
+    --ease-custom-back: ease;
+  }
 }
 
 ::view-transition-old(root),
@@ -12,15 +19,15 @@
 
 ::view-transition-group(card) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 ::view-transition-group(card-img) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 ::view-transition-group(card-title) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 
 ::view-transition-old(card),

@@ -41,8 +41,8 @@ const openDialog = () => {
   }
 }
 .card:hover {
-  filter: brightness(1.1);
-  scale: 1.05;
+  filter: brightness(1.05);
+  scale: 1.02;
 }
 
 .card-thumb {

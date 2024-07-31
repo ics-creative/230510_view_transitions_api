@@ -15,6 +15,9 @@ const openDialog = (item: Item) => {
   const img = element.querySelector<HTMLElement>("img")!;
   const title = element.querySelector<HTMLElement>(".headline")!;
 
+  const root = document.querySelector(":root")!;
+
+  root.classList.add("go-open");
   element.style.viewTransitionName = "card";
   img.style.viewTransitionName = "card-img";
   title.style.viewTransitionName = "card-title";
@@ -26,6 +29,7 @@ const openDialog = (item: Item) => {
       await nextTick();
     },
     cleanup() {
+      root.classList.remove("go-open");
       element.style.viewTransitionName = "";
       img.style.viewTransitionName = "";
       title.style.viewTransitionName = "";
@@ -49,6 +53,8 @@ const closeDialog = () => {
       element.style.viewTransitionName = "card";
       img.style.viewTransitionName = "card-img";
       title.style.viewTransitionName = "card-title";
+
+      document.querySelector(":root")!.classList.add("go-close");
     },
     cleanup() {
       const element = document.querySelector<HTMLElement>(`[data-card='${id}']`)!;
@@ -58,6 +64,8 @@ const closeDialog = () => {
       element.style.viewTransitionName = "";
       img.style.viewTransitionName = "";
       title.style.viewTransitionName = "";
+
+      document.querySelector(":root")!.classList.remove("go-close");
     },
   });
 };

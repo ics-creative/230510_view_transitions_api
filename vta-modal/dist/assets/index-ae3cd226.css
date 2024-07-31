@@ -32,23 +32,26 @@ button {
 
 :root {
   --duration: 0.5s;
+  --ease-custom-back: cubic-bezier(0.3, 1.5, 0.55, 0.92);
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
 }
 
+
+
 ::view-transition-group(card) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 ::view-transition-group(card-img) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 ::view-transition-group(card-title) {
   animation-duration: var(--duration);
-  animation-timing-function: cubic-bezier(0.3, 1.5, 0.55, 0.92);
+  animation-timing-function: var(--ease-custom-back);
 }
 
 ::view-transition-old(card),
